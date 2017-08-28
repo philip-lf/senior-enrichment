@@ -28,6 +28,7 @@ export default class WinterJokes extends Component {
     const {joke, answered} = this.state    
     return (
       <div>
+        <h1>wazzzup</h1>
         <h1 onClick={answered ? this.nextJoke : this.answer}>{joke.q}</h1>
         {answered && <h2>{joke.a}</h2>}
       </div>
@@ -39,7 +40,7 @@ function randomJoke() {
   return jokes[Math.floor(Math.random() * jokes.length)]
 }
 
-const jokes = `Q: What did the Arctic wolf ask in the restaurant?
+    const jokes = `Q: What did the Arctic wolf ask in the restaurant?
 A: Are these lemmings fresh off the tundra?
 Q: What did the big furry hat say to the warm woolly scarf?
 A: You hang around while I go on ahead.
