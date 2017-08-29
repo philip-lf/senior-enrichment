@@ -10,6 +10,19 @@ api.get('/hello', (req, res) => {
 	res.send({ hello: 'world' })
 })
 
+// Get all the campuses
+api.get('/campus', (req, res) => {
+	Campus.findAll({
+	})
+	.then(instance => {
+		if (!instance) {
+			res.send("planet");
+		} else {
+			res.json(instance);
+		}
+	});
+})
+
 // Listing all the students in the campus
 api.get('/campus/:CampusId', (req, res) => {
 	const CampusId = req.params.CampusId
@@ -28,7 +41,6 @@ api.get('/campus/:CampusId', (req, res) => {
 })
 
 // Adding a student only if they do not exist
-// test input = { "name": "Name", "email": "a@a.com",  "CampusId" : "1" }
 api.post('/student', function(req, res, next) { 
     if (!req.body.name || !req.body.email || !req.body.CampusId){
         res.send("data is not good");
