@@ -9,14 +9,10 @@ module.exports = db.define('student', {
     allowNull: false
   },
   email: {
-    type: Sequelize.DATE,
-    allowNull: false
-  },
-  campus: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaultValue: function () {
-      return getRandomImage();
+    validate: {
+      isEmail: true
     }
   }
 });

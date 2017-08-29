@@ -6,15 +6,11 @@
 	// This is an acceptable pattern but it does have limitations in that if you change the name of the model you will have to change every time it is requeired everywhere
 
 const Student = require('./student')
-const LunaCampus = require('./luna_campus')
-const TerraCampus = require('./terra_campus')
-const MarsCampus = require('./mars_campus')
-const TitanCampus = require('./titan_campus')
+const Campus = require('./Campus')
+
+Student.belongsTo(Campus);
 
 module.exports = {
 	Student: Student,
-	LunaCampus: LunaCampus,
-	TerraCampus: TerraCampus,
-	MarsCampus: MarsCampus,
-	TitanCampus: TitanCampus
+	Campus: Campus,
 }

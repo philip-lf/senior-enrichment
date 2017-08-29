@@ -3,7 +3,7 @@ var Sequelize = require('sequelize')
 var db = require('../index.js')
 
 
-module.exports = db.define('mars-campus', {
+module.exports = db.define('Campus', {
   campus_name: {
     type: Sequelize.STRING,
     allowNull: false
