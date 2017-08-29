@@ -27,13 +27,29 @@ api.get('/campus/:CampusId', (req, res) => {
 	});
 })
 
-// Adding a student to a specific campus
-// test input = { "name": "Whateva", "email": "dk@dk.com",  "CampusId" : "1" }
+// Adding a student only if they do not exist
+// test input = { "name": "Name", "email": "a@a.com",  "CampusId" : "1" }
 api.post('/student', function(req, res, next) { 
     if (!req.body.name || !req.body.email || !req.body.CampusId){
         res.send("data is not good");
     } else {
-        Student.create(req.body)
+        Student.findOrCreate({
+			where: req.body
+		})
+        .then(instance => {
+            res.json({ message: 'Created successfully', article: instance }) 
+        })
+    }
+});
+
+// Adding a campus only if it does not exist
+api.post('/campus', function(req, res, next) { 
+    if (!req.body.campus_name){
+        res.send("data is not good");
+	} else {
+        Campus.findOrCreate({
+			where: req.body
+		})
         .then(instance => {
             res.json({ message: 'Created successfully', article: instance }) 
         })
