@@ -12,23 +12,31 @@ export default class Campus extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            imageClicked: false
         }
+    }
+
+    handlePlanetClick(event) {
+
     }
 
     render() {
         return (
             <div>
-                {this.props.allAvailablePlanets.map((planet, i) => {
-                        return (
-                        <div
-                            className="planet"
-                            style={{ backgroundImage: 'url(' + this.props.img + ')' }}
-                            key={i}
-                            onClick={(e) => {this.props.click(e, planet)}}>
-                            <h1>{this.props.name}</h1>
+                {this.props.allAvailablePlanets.map((planet, i, j) => {
+                    return (
+                        <div>
+                            <div
+                                className="planet"
+                                style={{ backgroundImage: 'url(' + planet.planet_image + ')' }}
+                                key={i}
+                                onClick={(e) => { this.props.click(e, planet) }}>
+                                <h1>{planet.campus_name}</h1>
+                            </div>
+                            <p>{planet.student_name}</p>
                         </div>
-                )})}
+                    )
+                })}
             </div>
         )
     }

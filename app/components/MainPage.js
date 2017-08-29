@@ -15,7 +15,7 @@ export default class MainPage extends Component {
     componentDidMount() {
         axios.get('/api/campus')
             .then((response) => {
-                console.log("000000000", response.data, "00000000")
+                console.log("000", response.data, "000")
                 this.setState({
                     planets: response.data
                 })
@@ -41,16 +41,7 @@ export default class MainPage extends Component {
         {console.log(this.state.planets)}
         return (
             <div>
-                <Campus
-                    name="mars"
-                    allAvailablePlanets={this.state.planets}
-                    img="https://vignette4.wikia.nocookie.net/deathbattlefanon/images/5/5a/Sand.jpg/revision/latest?cb=20160503011426"
-                    click={this.handleClick} />
-
-                {/* <Campus name="luna" location="2" img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFXqCKGuzGkMjk6Z3TmFDl0WxaJ7tY3kpvXWqVJyCg9V3K8NVdrw" />
-                <Campus name="terra" location="3" img="http://pixelquarium.com/portfolio/papers/businesscards/water.jpg" />
-                <Campus name="titan" location="4" img="http://images.all-free-download.com/images/graphiclarge/fire_element_200077.jpg" /> */}
-
+                <Campus allAvailablePlanets={this.state.planets} click={this.handleClick} />
             </div>
         )
     }

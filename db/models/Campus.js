@@ -11,5 +11,9 @@ module.exports = db.define('Campus', {
   student_name: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: true
+  },
+  planet_image: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
