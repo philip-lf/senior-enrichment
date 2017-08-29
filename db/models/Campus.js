@@ -8,7 +8,7 @@ module.exports = db.define('Campus', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  students: {
+  student_name: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: true
   }
