@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Campus from './Campus'
 import axios from 'axios'
+import Header from './Header'
+import StudentTable from './StudentTable'
 
 export default class MainPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
             planets: [],
-            selectedCampus: null
+            selectedCampus: null,
+            homeButton: true
         }
         this.handleClick = this.handleClick.bind(this)
     }
@@ -15,34 +19,52 @@ export default class MainPage extends Component {
     componentDidMount() {
         axios.get('/api/campus')
             .then((response) => {
-                console.log("000", response.data, "000")
                 this.setState({
                     planets: response.data
                 })
-                console.log("111", response.data, "111")
             })
             .catch(console.error.bind(console))
     }
 
     handleClick(e, campus) {
-        console.log("-----------------------", campus)
         e.preventDefault()
         axios.get(`/api/campus/${campus.id}`)
-        .then(response => {response.data})
-        .then(data => {
-            this.setState({
-                selectedCampus: data
+            .then(response => { response.data })
+            .then(data => {
+                this.setState({
+                    selectedCampus: data
+                })
             })
+            .catch(console.error.bind(console));
+    }
+
+    studentHandleClick() {
+        this.setState({
+            homeButton: false
         })
-        .catch(console.error.bind(console));
     }
 
     render() {
-        {console.log(this.state.planets)}
+        // let campus;
+        // if (this.state.homeButton) { // Page opens up directly to the home page, Campus Component, which displays all the campuses(planets)
+        //     campus = <Campus allAvailablePlanets={this.state.planets} click={this.handleClick} />
+        // } else { // when student button is selected you go to the StudentTable Component 
+        //     campus = <StudentTable onClick={this.studentHandleClick} />
+        // }
+
         return (
-            <div>
-                <Campus allAvailablePlanets={this.state.planets} click={this.handleClick} />
-            </div>
+            <Router>
+                <div>
+                    <Header/>
+                    <div>
+                        <switch>
+                            <Route exact path="/campus" component={Campus} />
+                            <Route path="/student" component={StudentTable} />
+                        </switch>
+                    </div>
+                    {/* <Footer /> */}
+                </div>
+            </Router>
         )
     }
 }

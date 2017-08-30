@@ -4,8 +4,20 @@ body {
 
 .planet {
     border-radius: 50%;
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
     text-align: center;
     vertical-align: middle;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+}
+
+td, th {
+    border: 1px solid white;
+    padding: 8px;
 }
