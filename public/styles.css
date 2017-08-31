@@ -1,5 +1,6 @@
 body {
-    background-color: black;
+    background-image: url("space.jpg");
+    background-size: 100%;
 }
 
 .planet {
@@ -8,16 +9,21 @@ body {
     width: 400px;
     text-align: center;
     vertical-align: middle;
+    margin: auto;
 }
 
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 60%;
     color: white;
+    margin: auto;
+    text-align: center;
 }
 
 td, th {
     border: 1px solid white;
     padding: 8px;
+    width: 100%;
+    text-align: center;
 }

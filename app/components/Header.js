@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import StudentTable from './StudentTable'
+import Campus from './campus'
 
-export default class Campus extends Component {
+export default class Header extends Component {
 
     render() {
         // uses bootstrap

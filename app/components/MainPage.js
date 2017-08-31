@@ -4,6 +4,8 @@ import Campus from './Campus'
 import axios from 'axios'
 import Header from './Header'
 import StudentTable from './StudentTable'
+import SingleStudent from './SingleStudent'
+import SingleCampus from './SingleCampus'
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -45,13 +47,6 @@ export default class MainPage extends Component {
     }
 
     render() {
-        // let campus;
-        // if (this.state.homeButton) { // Page opens up directly to the home page, Campus Component, which displays all the campuses(planets)
-        //     campus = <Campus allAvailablePlanets={this.state.planets} click={this.handleClick} />
-        // } else { // when student button is selected you go to the StudentTable Component 
-        //     campus = <StudentTable onClick={this.studentHandleClick} />
-        // }
-
         return (
             <Router>
                 <div>
@@ -59,7 +54,10 @@ export default class MainPage extends Component {
                     <div>
                         <switch>
                             <Route exact path="/campus" component={Campus} />
-                            <Route path="/student" component={StudentTable} />
+                            <Route path="/SingleCampus" component={SingleCampus} />
+                            <Route exact path="/student" component={StudentTable} />
+                            <Route path="/student/:studentId" component={SingleStudent} />
+                            {/* <Route path="/campus/removing" component={SingleStudent} /> */}
                         </switch>
                     </div>
                     {/* <Footer /> */}

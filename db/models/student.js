@@ -4,7 +4,11 @@ var db = require('../index.js')
 
 
 module.exports = db.define('student', {
-  name: {
+  first_name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  last_name: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -14,5 +18,8 @@ module.exports = db.define('student', {
     validate: {
       isEmail: true
     }
+  },
+  phone_number: {
+    type: Sequelize.STRING
   }
 });
