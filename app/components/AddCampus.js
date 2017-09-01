@@ -7,7 +7,7 @@ export default class AddCampus extends Component {
         super(props)
         this.state = {
             campus: '',
-            imageURL: 'https://www.jpl.nasa.gov/spaceimages/images/wallpaper/PIA17563-1920x1200.jpg'
+            imageURL: 'https://images.alphacoders.com/590/590923.jpg'
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)

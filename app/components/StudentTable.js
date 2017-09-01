@@ -43,7 +43,6 @@ export default class StudentTable extends Component {
                     </tr>
                     <tr>
                         {this.state.student.map((info) => {
-                            console.log("babe")
                             return (
                                 <div>
                                     <td>
