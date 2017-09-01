@@ -7,6 +7,8 @@ import StudentTable from './StudentTable'
 import SingleStudent from './SingleStudent'
 import AddCampus from './AddCampus'
 import SingleCampus from './SingleCampus'
+import DeleteCampus from './DeleteCampus'
+import EditCampus from './EditCampus'
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -68,11 +70,24 @@ export default class MainPage extends Component {
                         <switch>
                             <Route exact path="/campus" component={Planets} />
                             <Route path="/AddCampus" component={AddCampus} />
+                            <Route path="/DeleteCampus/:id" render={(routeProps) => { 
+                                return (
+                                    <DeleteCampus 
+                                        id={routeProps.match.params.id}/> 
+                                )
+                            }} />
                             <Route path="/SingleCampus/:id" render={(routeProps) => { 
-                                console.log("dog", this.state.planets)
                                 return (
                                     <SingleCampus 
-                                        id={routeProps.match.params.id} // the id ex. 1,2,3...
+                                        id={routeProps.match.params.id}
+                                        students={this.state.students}
+                                        planets={this.state.planets}/> 
+                                )
+                            }} />
+                            <Route path="/EditCampus/:id" render={(routeProps) => { 
+                                return (
+                                    <EditCampus 
+                                        id={routeProps.match.params.id}
                                         students={this.state.students}
                                         planets={this.state.planets}/> 
                                 )

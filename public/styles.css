@@ -1,6 +1,8 @@
 body {
     background-image: url("space.jpg");
-    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .planet {
@@ -26,4 +28,8 @@ td, th {
     padding: 8px;
     width: 100%;
     text-align: center;
+}
+
+h1, h2, p {
+    color: white;
 }

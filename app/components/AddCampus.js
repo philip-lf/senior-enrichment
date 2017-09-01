@@ -32,7 +32,7 @@ export default class AddCampus extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <h2>New Campus</h2>
+                        <h2>New Campus:</h2>
                         <div>
                             <input
                                 type="text"

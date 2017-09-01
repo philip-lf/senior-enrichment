@@ -7,9 +7,15 @@ export default class SingleCampus extends Component {
         super(props)
     }
 
+    handleSubmit(event) {
+        axios.delete(`api/campus/${this.props.match.params.id}`)
+        .then(function(response){
+          console.log('deleted successfully')
+        }); 
+    }
+
     render() {
         console.log("im in SingleCampus")
-        console.log("dogdog",this.props.id)
         let students = this.props.students.filter(student => {
             return +this.props.id === student.campusId
         }) // returns array with matching id
@@ -18,7 +24,6 @@ export default class SingleCampus extends Component {
             return +this.props.id === planet.id
         }) // returns array with matching id
 
-        console.log("-----------------")
 
         return (
             
@@ -38,6 +43,9 @@ export default class SingleCampus extends Component {
                         </div>
                     ))}
                 </div>
+                {/* <form onSubmit={this.handleSubmit}>
+                    <button type="submit" className="button">Delete Campus</button>
+                </form> */}
             </div>
         )
     }

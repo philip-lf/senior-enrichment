@@ -119,20 +119,20 @@ api.post('/campus', function(req, res, next) {
 // DELETE Routes ***************************************************************************************************
 
 // Delete a campus by id
-api.delete('/campus/:id', function(req, res, next) { 
+api.delete('/DeleteCampus/:id', function(req, res, next) { 
+	console.log(req.params.id)
 	const id = req.params.id
-    if (!req.body.campus_name){
-        res.send("There is no body to delete");
-	} else {
+
         Campus.destroy({
 			where: {
-				id
+				id: id
 			}
 		})
         .then(instance => {
+			console.log("AAAAAAAAA")
             res.json({ message: 'Deleted successfully', article: instance }) 
         })
-    }
+
 });
 
 // Delete a student by id
@@ -148,7 +148,8 @@ api.delete('/student/:id', function(req, res, next) {
 		})
         .then(instance => {
             res.json({ message: 'Deleted successfully', article: instance }) 
-        })
+		})
+		.catch(next)
     }
 });
 
