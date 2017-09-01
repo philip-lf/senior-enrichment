@@ -5,43 +5,39 @@ import axios from 'axios'
 export default class SingleCampus extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            campus: '',
-            imageURL: 'https://il8.picdn.net/shutterstock/videos/1204594/thumb/1.jpg'
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleSubmit(event) {
-        axios.post('/api/campus', { campus_name: this.state.campus, planet_image: this.state.imageURL})
-        .then(function(response){
-          console.log('saved successfully')
-        }); 
-    }
-
-    handleChange(event) {
-        this.setState({
-            campus: event.target.value
-        })
-        console.log(event.target.value)
     }
 
     render() {
+        console.log("im in SingleCampus")
+        console.log("dogdog",this.props.id)
+        let students = this.props.students.filter(student => {
+            return +this.props.id === student.campusId
+        }) // returns array with matching id
+
+        let planets = this.props.planets.filter(planet => {
+            return +this.props.id === planet.id
+        }) // returns array with matching id
+
+        console.log("-----------------")
+
         return (
+            
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <h2>New Campus</h2>
-                        <div>
-                            <input
-                                type="text"
-                                value={this.state.campus}
-                                onChange={this.handleChange}/>
-                        </div> 
-                        <button>Submit</button>
-                    </div>
-                </form>
+                <div>
+                    {students.map((student, i) => (
+                        <p key={i}>{student.first_name}</p>
+                    ))}
+                </div>
+                <div>
+                    {planets.map((planet, i) => (
+                        <div
+                            className="planet"
+                            style={{ backgroundImage: 'url(' + planet.planet_image + ')' }}
+                            key={i}>
+                            <h1>{planet.campus_name}</h1>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }

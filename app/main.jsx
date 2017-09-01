@@ -7,10 +7,8 @@ import store from './store'
 import MainPage from './components/MainPage'
 
 render(
-  <Provider store={store}>
     <div>
       <MainPage/>
-    </div>
-  </Provider>,
+    </div>,
   document.getElementById('main')
 )
