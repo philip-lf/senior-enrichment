@@ -12,14 +12,6 @@ export default class EditCampus extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    // handleSubmit() {
-    //     console.log("--------", this.props.id)
-    //     axios.delete(`/api/DeleteCampus/${this.props.id}`)
-    //         .then(function (response) {
-    //             console.log('deleted successfully')
-    //         });
-    // }
-
     handleSubmit(){
         const campusId = this.props.id;
     

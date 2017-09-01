@@ -90,16 +90,14 @@ api.get('/student/personal/:id', (req, res) => {
 
 // Adding a student only if they do not already exist
 api.post('/student', function(req, res, next) { 
-    if (!req.body.first_name || !req.body.last_name || !req.body.email || !req.body.campusId){
-        res.send("data is not good");
-    } else {
-        Student.findOrCreate({
-			where: req.body
-		})
-        .then(instance => {
-            res.json(instance) 
-        })
-    }
+	Student.findOrCreate({
+		where: req.body
+	})
+	.then(instance => {
+		res.json(instance) 
+	})
+	.catch(next)
+
 });
 
 // Adding a campus only if it does not already exist
@@ -120,37 +118,29 @@ api.post('/campus', function(req, res, next) {
 
 // Delete a campus by id
 api.delete('/DeleteCampus/:id', function(req, res, next) { 
-	console.log(req.params.id)
 	const id = req.params.id
-
-        Campus.destroy({
-			where: {
-				id: id
-			}
-		})
-        .then(instance => {
-			console.log("AAAAAAAAA")
-            res.json({ message: 'Deleted successfully', article: instance }) 
-        })
-
+	Campus.destroy({
+		where: {
+			id
+		}
+	})
+	.then(instance => {
+		res.json({ message: 'Deleted successfully', article: instance }) 
+	})
 });
 
 // Delete a student by id
 api.delete('/student/:id', function(req, res, next) { 
 	const id = req.params.id
-    if (!req.body.first_name || !req.body.last_name || !req.body.email || !req.body.campusId){
-        res.send("There is no body to delete");
-	} else {
-        Student.destroy({
-			where: {
-				id
-			}
-		})
-        .then(instance => {
-            res.json({ message: 'Deleted successfully', article: instance }) 
-		})
-		.catch(next)
-    }
+	Student.destroy({
+		where: {
+			id
+		}
+	})
+	.then(instance => {
+		res.json({ message: 'Deleted successfully', article: instance }) 
+	})
+	.catch(next)
 });
 
 // PUT Routes ***************************************************************************************************
@@ -179,24 +169,9 @@ api.put('/campus/:id', function(req, res, next) {
 api.put('/student/:id', function(req, res, next) {
 	console.log("-----")
 	const id = req.params.id
-	Student.findOne({
-		where: {
-			id
-		}
-	})
-	.then(student => {
-		console.log("-----",student)
-		student.update({
-			first_name: req.body.first_name, 
-			last_name: req.body.last_name, 
-			email: req.body.email, 
-			phone_number: req.body.phone_number,
-			campusId: req.body.campusId
-		})
-	})
-    .then(response => {
-		res.json(response)
-	})
+	Student.findById(id)
+    .then(result => result.update(req.body))
+    .then(result => res.send(result))
     .catch(next);
 })
 

@@ -28,41 +28,38 @@ export default class StudentTable extends Component {
         return (
             <div>
                 <div>
-                    <label>Name</label>
-                    <div>
-                        <input 
-                            type="text" 
-                            value={this.state.value}
-                            onChange={this.handleChange}/>
-                    </div>
                     <button>
-                        <Link to="/student">ADD</Link>  
+                        <Link to="/AddStudent">ADD</Link>  
                     </button>
                 </div>
                 <table>
                     <tr>
                         <th>Student ID</th>
-                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Campus</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     <tr>
                         {this.state.student.map((info) => {
+                            console.log("babe")
                             return (
                                 <div>
                                     <td>
                                         <Link to={`/student/${info.id}`}>{info.id}</Link>
                                     </td>
-                                    <td>{`${info.first_name} ${info.last_name}`}</td>
+                                    <td>{info.first_name}</td>
+                                    <td>{info.last_name}</td>
+                                    <td>{info.campusId}</td>
                                     <td>{info.email}</td>
                                     <td>
-                                        <Link to={`/student/${info.id}`}>
-                                            <button>Edit</button>
+                                        <Link to={`/student/update/${info.id}`}>
+                                            <button>EDIT</button>
                                         </Link>
                                     </td>
                                     <td>
-                                        <Link to={`/student/${info.id}`}>
+                                        <Link to={`/student/delete/${info.id}`}>
                                             <button>X</button>
                                         </Link>
                                     </td>
@@ -70,15 +67,7 @@ export default class StudentTable extends Component {
                             )
                         })}
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </table>
-                <span>Waazup</span>
             </div>
         )
     }

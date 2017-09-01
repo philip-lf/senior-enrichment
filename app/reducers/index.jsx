@@ -16,7 +16,7 @@ const initialState = {
 //   id: id 
 // })
 
-//dispatcher
+//thunk action creator
 // export const removeCampus = (id) => (
 //   dispatch => {
 //     dispatch(deleteCampus(id))

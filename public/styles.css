@@ -21,6 +21,8 @@ table {
     color: white;
     margin: auto;
     text-align: center;
+    background-color: black;
+    opacity: 0.8;
 }
 
 td, th {

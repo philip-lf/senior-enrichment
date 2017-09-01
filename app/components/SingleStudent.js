@@ -11,14 +11,14 @@ export default class SingleStudent extends Component {
         }
     }
 
-    componentDidMount(student) {  
-        console.log(student)   
-        axios.get(`/api/student/${student.id}`)
-            .then(res => res.data)
-            .then(student => {
-                this.setState({student})
-            })
-    }
+    // componentDidMount(student) {  
+    //     console.log(student)   
+    //     axios.get(`/api/student/${student.id}`)
+    //         .then(res => res.data)
+    //         .then(student => {
+    //             this.setState({student})
+    //         })
+    // }
 
     handleChange(event) {
 		this.setState({ value: event.target.value })
@@ -27,7 +27,7 @@ export default class SingleStudent extends Component {
     render() {
         return (
             <div>
-                <p>wazzzzzup</p>
+                {/* <p>First Name: {student.first_name}</p> */}
             </div>
         )
     }

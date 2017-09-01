@@ -9,6 +9,9 @@ import AddCampus from './AddCampus'
 import SingleCampus from './SingleCampus'
 import DeleteCampus from './DeleteCampus'
 import EditCampus from './EditCampus'
+import AddStudent from './AddStudent'
+import DeleteStudent from './DeleteStudent'
+import EditStudent from './EditStudent'
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -71,10 +74,7 @@ export default class MainPage extends Component {
                             <Route exact path="/campus" component={Planets} />
                             <Route path="/AddCampus" component={AddCampus} />
                             <Route path="/DeleteCampus/:id" render={(routeProps) => { 
-                                return (
-                                    <DeleteCampus 
-                                        id={routeProps.match.params.id}/> 
-                                )
+                                return (<DeleteCampus id={routeProps.match.params.id}/>)
                             }} />
                             <Route path="/SingleCampus/:id" render={(routeProps) => { 
                                 return (
@@ -93,7 +93,10 @@ export default class MainPage extends Component {
                                 )
                             }} />
                             <Route exact path="/student" component={StudentTable} />
-                            <Route path="/student/:studentId" component={SingleStudent} />
+                            <Route exact path="/student/:studentId" component={SingleStudent} />
+                            <Route exact path="/student/delete/:id" component={DeleteStudent} />
+                            <Route exact path="/student/update/:id" component={EditStudent} />
+                            <Route exact path="/AddStudent" component={AddStudent} />
                         </switch>
                     </div>
                 </div>
